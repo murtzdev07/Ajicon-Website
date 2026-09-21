@@ -1,0 +1,83 @@
+@import "tailwindcss"; /* Keep your Tailwind imports if using v4, otherwise use your existing tailwind directives */
+
+/* ==========================================
+   1. GLOBAL SMOOTH SCROLLING 
+   ========================================== */
+html {
+  scroll-behavior: smooth;
+  /* Improve scroll physics for touch and trackpads */
+  scroll-padding-top: 100px; /* Ensures fixed/floating navbar won't cut off section headings */
+}
+
+/* Ensure momentum scrolling on mobile iOS devices */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==========================================
+   2. BRAND-CUSTOM SCROLLBAR
+   ========================================== */
+
+/* Webkit-based browsers: Chrome, Safari, Edge, Brave, etc. */
+::-webkit-scrollbar {
+  width: 10px; /* Slimmer, elegant width */
+  height: 10px; /* For horizontal scrollbars */
+}
+
+/* Scrollbar Track (The background path) */
+::-webkit-scrollbar-track {
+  background: #FAF7F2; /* Matches the warm off-white app background */
+  border-left: 1px solid rgba(188, 212, 202, 0.3); /* Subtle Border divider */
+}
+
+/* Scrollbar Thumb (The draggable handle) */
+::-webkit-scrollbar-thumb {
+  background: #0B5A3E; /* Main Forest Green */
+  border-radius: 9999px; /* Fully pill-shaped round curves */
+  border: 2px solid #FAF7F2; /* Creates a gorgeous "floating" pad effect inside the track */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover state for the Thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #08422E; /* Darker green on hover */
+}
+
+/* Active / Dragging state for the Thumb */
+::-webkit-scrollbar-thumb:active {
+  background: #F4941C; /* Spark of energy: Marigold while clicking & dragging */
+}
+
+/* Firefox support */
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #0B5A3E #FAF7F2; /* Thumb & Track colors */
+  }
+}
+
+/* ==========================================
+   3. OPTIONAL: INTERIOR CUSTOM CONTAINER SCROLLBARS
+   We can also make any overflow-x/y boxes in your design share this look 
+   ========================================== */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #0B5A3E #FAF7F2;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(11, 90, 62, 0.4);
+  border-radius: 9999px;
+  border: none;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0B5A3E;
+}
