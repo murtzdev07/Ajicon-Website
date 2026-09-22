@@ -95,7 +95,7 @@ export default function Products({ onSelectProduct }) {
       environmentalImpact: "High volume natural bio-fuel crop source.",
       materials: "Natural Mustard Husk",
       features: ["High availability in Malwa region", "No chemical binders", "Ideal for constant-load boilers"],
-      image: "image_3.png", 
+      image: "mustardbriq.png", 
       alt: "Ajicon 90mm cylindrical Mustard Briquettes stack at Ratlam plant"
     },
     {
@@ -115,7 +115,7 @@ export default function Products({ onSelectProduct }) {
       environmentalImpact: "Saves natural forests via timber-byproduct cycle.",
       materials: "Wood Shavings & Sawdust",
       features: ["Stable, high-density extrusion", "Low sparking pattern in furnaces", "Low relative ash content"],
-      image: "image_1.png", 
+      image: "sawdustbriq.png", 
       alt: "Cylindrical high-pressure compact Wood Sawdust Briquettes from Ajicon"
     },
     {
@@ -135,7 +135,7 @@ export default function Products({ onSelectProduct }) {
       environmentalImpact: "Utilizes vast regional soja crop waste.",
       materials: "Pure Soya Husk",
       features: ["High bulk loading availability", "Smooth burning, lower smoke levels", "Robust road dispatch bulk options"],
-      image: "image_2.png", 
+      image: "soyabeanbriq.png", 
       alt: "White Coal Soya husk biomass briquette logs ready for dispatch by Ajicon"
     },
     {

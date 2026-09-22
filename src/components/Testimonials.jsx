@@ -1,52 +1,51 @@
 import { useState, useEffect } from 'react';
 
 export default function Testimonials() {
-  // Hardcoded your actual live reviews as the default state! 
-  // This guarantees zero layout shift and 100% uptime even if the API proxy fails.
+  // Hardcoded premium enterprise reviews
   const [reviews, setReviews] = useState([
     {
-      id: "g1",
-      author_name: "Mohammed Tambawala",
-      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjWegMeoTjZgo8G7PsNYg42JlO6xWlRNg4nj_e-7M2CTJEOFHGfQ=s128-c0x00000000-cc-rp-mo-ba2",
+      id: "c1",
+      author_name: "Birla Grasim",
+      profile_photo_url: "/aditya_birla.jpg", // Place this logo in your public folder
       rating: 5,
-      text: "Excellent quality biomass briquettes, biomass pellets, and husk briquettes! They burn efficiently, are eco-friendly, and a great alternative to conventional fuels. Highly recommended!",
-      relative_time_description: "11 months ago"
+      text: "Finding a reliable biocoal supplier was a challenge until we partnered with Ajicon Industries. Their product quality, supply consistency and excellent customer services have been outstanding. We look forward to a long-term collaboration.",
+      relative_time_description: "Enterprise Partner"
     },
     {
-      id: "g2",
-      author_name: "Salman Rang wala",
-      profile_photo_url: "https://lh3.googleusercontent.com/a/ACg8ocJ-bs10R5d-CSA_AE-xBNFyPyqxtzjj5Q-7iWpMg6KQDrXpVw=s128-c0x00000000-cc-rp-mo",
+      id: "c2",
+      author_name: "Bridgestone",
+      profile_photo_url: "/bridgestone.png", // Place this logo in your public folder
       rating: 5,
-      text: "Ajicon Industries Pvt. Ltd. is a reputed and dependable manufacturer and supplier of biomass briquettes... Their products maintain high calorific value, consistent quality, and low moisture content, making them ideal for industrial applications and steam generation.",
-      relative_time_description: "11 months ago"
+      text: "Ajicon Industry has proven to be a highly dependable supplier of biocoal. Their unwavering commitment to quality, timely deliveries, and exceptional customer service have made a significant impact on our operations. We appreciate their dedication to providing sustainable and efficient fuel solution.",
+      relative_time_description: "Enterprise Partner"
     },
     {
-      id: "g3",
-      author_name: "Anchor Tr LLC",
-      profile_photo_url: "https://lh3.googleusercontent.com/a/ACg8ocIcwriTIecv4EIAZgRkZ-NFWgpLXSFL2n81o0r7DFH40XOEZg=s128-c0x00000000-cc-rp-mo",
+      id: "c3",
+      author_name: "Reliance Industries",
+      profile_photo_url: "/reliance.jpg", // Place this logo in your public folder
       rating: 5,
-      text: "We’ve been sourcing biomass pellets and briquettes, husk pellets, and bio coal from Ajicon Industries Pvt. Ltd. for quite some time now, and the quality has always been consistent. Their biomass pellets burn efficiently and help us maintain a clean and sustainable energy process.",
-      relative_time_description: "11 months ago"
+      text: "We have been sourcing biocoal from Ajicon Industries for a long time, and their commitment to quality is truly commendable. The fuel efficiency and consistency of their product have significantly benefited our operations. Their professionalism and timely deliveries make them a trusted partner.",
+      relative_time_description: "Enterprise Partner"
     },
     {
-      id: "g4",
-      author_name: "Sunil Rai",
-      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjUqWRGC_4keMkFKJ3Bxqj8HSr2qCwM39sLH7BFj4hvPc1DRl8Q=s128-c0x00000000-cc-rp-mo-ba4",
+      id: "c4",
+      author_name: "Thermax",
+      profile_photo_url: "/thermax.jpg", // Place this logo in your public folder
       rating: 5,
-      text: "Ajicon Industries is a reputed and committed supplier with a strong supply chain network across India. I have tested their services for large-scale biomass briquette and pellet supplies and found their performance to be excellent.",
-      relative_time_description: "11 months ago"
+      text: "The team at Ajicon understands our requirements and always ensures seamless supply. Their services meet our energy needs perfectly, and their prompt support and management service make them stand out. We highly recommend them.",
+      relative_time_description: "Enterprise Partner"
     },
     {
-      id: "g5",
-      author_name: "Akash Rao",
-      profile_photo_url: "https://lh3.googleusercontent.com/a/ACg8ocL8bxLE_4-7Fk93iUjef11RXbyPqfHVOsCMW8aE2osRKVp2jg=s128-c0x00000000-cc-rp-mo",
+      id: "c5",
+      author_name: "Saint Gobain",
+      profile_photo_url: "/saint_gobain.png", // Place this logo in your public folder
       rating: 5,
-      text: "The briquettes are high-quality, efficient, and produce minimal emissions. The company's commitment to sustainability and environmental responsibility is evident in their production process and products.",
-      relative_time_description: "11 months ago"
+      text: "We have been consistently impressed by the superior quality of biocoal supplied by Ajicon Industry. Their attention to detail, reliability, customer-first approach makes them a preferred partner in our journey to cleaner and more efficient energy solutions. Highly recommended.",
+      relative_time_description: "Enterprise Partner"
     }
   ]);
 
-  // 🟢 LIVE API FETCH LOGIC (Using a more reliable proxy)
+  // 🟢 LIVE API FETCH LOGIC (Kept fully intact, but disabled overwrite to protect B2B reviews)
   useEffect(() => {
     const fetchGoogleReviews = async () => {
       try {
@@ -65,7 +64,9 @@ export default function Testimonials() {
         const data = await response.json();
         
         if(data.result && data.result.reviews) {
-          setReviews(data.result.reviews);
+          // NOTE: Commented out so it doesn't overwrite your corporate reviews above!
+          // setReviews(data.result.reviews);
+          console.log("Google Reviews Fetched Successfully, but kept hidden to show Enterprise Clients.");
         }
       } catch (error) {
         console.error("Live fetch failed, defaulting to reliable fallback state.", error);
@@ -109,7 +110,7 @@ export default function Testimonials() {
             </div>
           </div>
           <p className="text-base sm:text-lg text-[#4E6259] font-medium leading-relaxed">
-            Based on verified Google Reviews from industrial plant managers, engineers, and procurement heads who rely on our biofuels.
+            Based on direct feedback from industry leaders, plant managers, and procurement heads who rely on our biofuels.
           </p>
         </div>
       </div>
@@ -156,12 +157,20 @@ export default function Testimonials() {
               <div className="flex items-center justify-between border-t border-[#E1ECE7] pt-6">
                 <div className="flex items-center gap-4">
                   {review.profile_photo_url ? (
-                    <img src={review.profile_photo_url} alt={review.author_name} className="w-12 h-12 rounded-full object-cover border border-[#BCD4CA]/40" />
-                  ) : (
-                    <div className="w-12 h-12 rounded-full bg-[#E6F0EC] border border-[#BCD4CA]/40 flex items-center justify-center font-black text-[#0B5A3E] text-lg flex-shrink-0">
-                      {getInitials(review.author_name)}
-                    </div>
-                  )}
+                    <img 
+                      src={review.profile_photo_url} 
+                      alt={review.author_name} 
+                      className="w-12 h-12 rounded-full object-contain bg-white border border-[#BCD4CA]/40 p-1" 
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className={`${review.profile_photo_url ? 'hidden' : 'flex'} w-12 h-12 rounded-full bg-[#E6F0EC] border border-[#BCD4CA]/40 items-center justify-center font-black text-[#0B5A3E] text-lg flex-shrink-0`}>
+                    {getInitials(review.author_name)}
+                  </div>
+                  
                   <div>
                     <h4 className="text-sm font-black text-[#0D1C16] leading-tight max-w-[150px] truncate" title={review.author_name}>{review.author_name}</h4>
                     <p className="text-xs text-[#4E6259] font-semibold mt-0.5">{review.relative_time_description}</p>

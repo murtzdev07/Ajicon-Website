@@ -35,7 +35,7 @@ export default function Contact({ selectedProduct }) {
         },
         body: JSON.stringify({
           // Replace this string with your actual access key from Web3Forms
-          access_key: "5a9c1144-cec2-4e43-b381-3530a5da9326", 
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY, 
           subject: `New Bulk Supply Inquiry from ${formData.company}`,
           from_name: "Ajicon Website Portal",
           ...formData
