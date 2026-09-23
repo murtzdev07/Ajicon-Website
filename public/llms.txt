@@ -1,0 +1,6 @@
+Title: Ajicon Industries Pvt. Ltd.
+Description: Manufacturer of sustainable industrial biomass pellets and high-CV husk briquettes based in Ratlam, Madhya Pradesh, India.
+
+Pages:
+- / : Core manufacturing capabilities and product catalog (Biomass Pellets, Husk Briquettes).
+- /careers : Active job openings for engineering and plant management roles.

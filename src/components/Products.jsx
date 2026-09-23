@@ -155,7 +155,7 @@ export default function Products({ onSelectProduct }) {
       environmentalImpact: "Direct reuse of cob waste.",
       materials: "Compacted Corn Cobs",
       features: ["Excellent density and shape", "Steady-rate heating GCV performance", "Low trace slagging"],
-      image: "image_5.png", 
+      image: "corncubbriq.png", 
       alt: "Natural high-pressure pressed Corncob cylinder briquette fuel at plant stockpiles"
     }
   ];

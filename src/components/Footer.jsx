@@ -103,15 +103,57 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-stone-500 text-xs font-semibold">
+        {/* Bottom Copyright & Developer Bar */}
+        <div className="border-t border-white/10 pt-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+          
+          <p className="text-stone-500 text-xs font-semibold order-2 lg:order-1">
             &copy; {currentYear} Ajicon Industries Private Limited. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          
+          {/* 🟢 NEW: Highlighted Developer Signature Badge */}
+          <div className="order-1 lg:order-2 flex items-center gap-3 px-5 py-2.5 rounded-full bg-black/40 border border-[#0B5A3E]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-[#F4941C]/40 hover:bg-[#0B5A3E]/10 transition-all duration-500 group">
+             
+             {/* Animated Node */}
+             <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F4941C] opacity-40 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F4941C]"></span>
+             </span>
+             
+             {/* Title */}
+             <span className="text-[10px] font-black uppercase tracking-[0.15em] text-stone-400 group-hover:text-stone-300 transition-colors">
+               Engineered By
+             </span>
+             
+             {/* Name with Dynamic Gradient Hover */}
+             <a 
+               href="https://murtaza-info.vercel.app" 
+               target="_blank" 
+               rel="noreferrer" 
+               className="text-xs font-black bg-gradient-to-r from-white to-stone-400 group-hover:from-[#F4941C] group-hover:to-white bg-clip-text text-transparent transition-all duration-500"
+             >
+                Murtaza Dawoodjeewala
+             </a>
+             
+             {/* Divider */}
+             <span className="w-px h-3 bg-white/10"></span>
+             
+             {/* Contact Number with Icon */}
+             <a 
+               href="tel:+918208266645" 
+               className="text-[11px] font-bold text-stone-400 hover:text-white transition-colors flex items-center gap-1.5"
+             >
+                <svg className="w-3 h-3 text-[#0B5A3E] group-hover:text-[#F4941C] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                8208266645
+             </a>
+          </div>
+
+          <div className="flex items-center gap-6 order-3">
             <a href="#" className="text-stone-500 hover:text-white text-xs font-semibold transition-colors">Privacy Policy</a>
             <a href="#" className="text-stone-500 hover:text-white text-xs font-semibold transition-colors">Terms of Trade</a>
           </div>
+          
         </div>
       </div>
     </footer>

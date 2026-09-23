@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
+import { Helmet } from 'react-helmet-async';
 
 export default function Careers() {
   const [submitted, setSubmitted] = useState(false);
@@ -76,6 +77,11 @@ export default function Careers() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Green Energy Careers | Ajicon Industries Ratlam</title>
+      <meta name="description" content="Join Ajicon Industries in Ratlam. We are hiring engineers, plant managers, and logisticians to lead India's transition to sustainable industrial biomass." />
+    </Helmet>
     <section id="careers" className="py-24 bg-white border-t border-[#BCD4CA]/30 relative overflow-hidden">
       
       <div className="absolute right-0 top-1/4 w-96 h-96 bg-[#0B5A3E]/5 rounded-full blur-3xl pointer-events-none" />
@@ -226,5 +232,6 @@ export default function Careers() {
         </div>
       </div>
     </section>
+    </>
   );
 }

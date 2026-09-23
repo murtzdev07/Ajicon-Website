@@ -67,21 +67,21 @@ export default function About() {
       name: "Shabbir Kaba", 
       role: "Founder", 
       initials: "SK",
-      image: "/founder.jpg", // Ensure this file exists in your public/ folder
+      image: "/founder.jpg", 
       bio: "The visionary behind our origins, bringing years of pioneering insight to India’s renewable and biomass conversion landscape." 
     },
     { 
       name: "Ali Akbar", 
       role: "CEO", 
       initials: "AA",
-      image: "/ceo.jpg", // Ensure this file exists in your public/ folder
+      image: "/ceo.jpg", 
       bio: "Driving multi-state expansion, industrial logistics compliance, and strategic multi-ton contract executions with top-tier brands." 
     },
     { 
       name: "Jugal Jaat", 
       role: "Director", 
       initials: "JJ",
-      image: "/director.jpg", // Ensure this file exists in your public/ folder
+      image: "/director.jpg", 
       bio: "Guiding plant automation, malwa agro-sourcing networks, engineering calibration, and massive production scales." 
     }
   ];
@@ -96,18 +96,15 @@ export default function About() {
         
         {/* Grid 1: Vision & Photo Section */}
         <div className="grid lg:grid-cols-12 gap-16 items-center mb-24">
-          
-          {/* Left Visual Area (5 spans) */}
           <div className="lg:col-span-5 relative h-[480px] md:h-[560px] w-full">
             <div className="absolute inset-0 rounded-[2.5rem] bg-[#0A1410] border border-[#BCD4CA] shadow-2xl overflow-hidden group">
               <img 
                 src="image_6.png" 
-                alt="AJICON INDUSTRIES advanced 5-unit biomass and bio-coal processing plant with large conveyor belts and stored natural raw agro-energy stockpiles on factory floor"
+                alt="AJICON INDUSTRIES advanced 5-unit biomass and bio-coal processing plant"
                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
               
-              {/* Overlapping Facility Badge */}
               <div className="absolute bottom-6 left-6 right-6 bg-[#0B5A3E]/95 border border-[#BCD4CA]/30 backdrop-blur-md p-5 rounded-2xl text-white shadow-xl">
                 <span className="text-[10px] font-black uppercase text-[#F4941C] tracking-widest block mb-1">Our Infrastructure</span>
                 <h4 className="text-base sm:text-lg font-black leading-tight">5 Advanced Manufacturing Units</h4>
@@ -116,7 +113,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Text Area (7 spans) */}
           <div className="lg:col-span-7 max-w-2xl text-left">
             <span className="text-[#0B5A3E] text-xs font-black uppercase tracking-[0.2em] bg-[#E6F0EC] px-4 py-1.5 rounded-full border border-[#B3D1C5]">
               Who We Are
@@ -131,7 +127,6 @@ export default function About() {
               We specialize in collecting agro-industrial residues and engineering them into robust, high-caliber bio-coal briquettes, pellets, and fuels. This circular system enables industrial power, smelting, casting, and brick plants to immediately cut imported coal dependence, lower fuel costs, and earn carbon-neutral offsets. We handle end-to-end logistics with major road transportation routes.
             </p>
 
-            {/* Interactive Timeline Tab system */}
             <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#E1ECE7] mb-8">
               <div className="flex gap-2 border-b border-[#BCD4CA]/30 pb-3 mb-4">
                 {Object.keys(milestones).map((year) => (
@@ -156,7 +151,6 @@ export default function About() {
                 </span>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -171,30 +165,91 @@ export default function About() {
           ))}
         </div>
 
-        {/* Section 3: Interactive Processing Tour Component */}
-        <div className="bg-[#FAF7F2] border border-[#BCD4CA]/50 rounded-[2.5rem] p-6 md:p-12 mb-24 shadow-sm">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+        {/* Section 3: Connected Pipeline Flow Component */}
+        <div className="bg-[#FAF7F2] border border-[#BCD4CA]/50 rounded-[2.5rem] p-6 md:p-12 mb-24 shadow-sm relative overflow-hidden">
+          
+          {/* Blueprint Grid Background (Subtle Isometric Tech Aesthetic) */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+          <div className="max-w-3xl mx-auto text-center mb-16 relative z-10">
             <span className="text-[#F4941C] text-[10px] font-black uppercase tracking-[0.2em] bg-[#FDF2E2] px-3.5 py-1.5 rounded-lg border border-[#FADCB3]">
-              Automated Facility Tour
+              Facility Process Flow
             </span>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0D1C16] mt-4 mb-4 tracking-tight leading-tight">
-              The Journey of High-Density Biomass
+              The Biomass Assembly Line
             </h3>
             <p className="text-sm sm:text-base text-[#4E6259] font-semibold">
-              Explore the exact multi-ton automation flow we employ at our Ratlam facility to turn agricultural waste into calibrated solid bio-energy. Click through the phases:
+              Trace the exact structural pathway we employ at our Ratlam facility to engineer raw agro-waste into calibrated solid fuel.
             </p>
           </div>
 
-          {/* Stepper Tabs */}
-          <div className="flex flex-wrap lg:flex-nowrap justify-between gap-2 border-b border-[#BCD4CA]/40 pb-4 mb-8 overflow-x-auto">
+          {/* Interactive Pipeline Track */}
+          <div className="relative z-10 max-w-5xl mx-auto mb-12 hidden md:block">
+            {/* Base Background Track */}
+            <div className="absolute top-6 left-0 w-full h-1.5 bg-[#E1ECE7] rounded-full" />
+            
+            {/* Animated Active Track (Fills up based on current step) */}
+            <div 
+              className="absolute top-6 left-0 h-1.5 bg-[#0B5A3E] rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{ width: `${(activeStep / (processingSteps.length - 1)) * 100}%` }}
+            >
+              {/* Pulsing Energy Node on the leading edge */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-[#F4941C] rounded-full shadow-[0_0_12px_rgba(244,148,28,0.8)] animate-pulse" />
+            </div>
+
+            <div className="relative flex justify-between">
+              {processingSteps.map((step, idx) => {
+                const isCompleted = idx <= activeStep;
+                const isActive = idx === activeStep;
+                
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveStep(idx)}
+                    className="flex flex-col items-center group focus:outline-none w-32 relative"
+                  >
+                    {/* Pipeline Node */}
+                    <div 
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center font-black transition-all duration-500 z-10 mb-4 border-2 shadow-sm
+                        ${isActive 
+                          ? 'bg-[#0B5A3E] text-white border-[#0B5A3E] scale-110 shadow-[#0B5A3E]/30' 
+                          : isCompleted 
+                            ? 'bg-[#0B5A3E] text-white border-[#0B5A3E]' 
+                            : 'bg-white text-[#4E6259] border-[#BCD4CA] group-hover:border-[#0B5A3E]'
+                        }
+                      `}
+                    >
+                      {idx + 1}
+                    </div>
+                    {/* Label below node */}
+                    <div className={`text-center transition-all duration-300 ${isActive ? 'translate-y-1' : ''}`}>
+                      <p className={`text-[10px] font-black uppercase tracking-wider leading-none mb-1 
+                        ${isActive ? 'text-[#F4941C]' : 'text-[#475C53]'}`}
+                      >
+                        {step.subtitle}
+                      </p>
+                      <p className={`text-xs font-bold leading-tight
+                        ${isActive ? 'text-[#0D1C16]' : 'text-[#4E6259]'}`}
+                      >
+                        {step.title}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile Vertical Steps (Visible only on small screens) */}
+          <div className="md:hidden flex overflow-x-auto gap-3 pb-4 mb-6 relative z-10 snap-x">
             {processingSteps.map((step, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveStep(idx)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all cursor-pointer border flex-shrink-0 text-left
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all border flex-shrink-0 snap-start
                   ${activeStep === idx 
-                    ? 'bg-white border-[#BCD4CA] shadow-sm text-[#0B5A3E]' 
-                    : 'border-transparent text-[#4E6259] hover:bg-white/50'
+                    ? 'bg-white border-[#0B5A3E] shadow-sm text-[#0B5A3E]' 
+                    : 'bg-white/50 border-transparent text-[#4E6259]'
                   }
                 `}
               >
@@ -203,37 +258,58 @@ export default function About() {
                 `}>
                   {idx + 1}
                 </span>
-                <div>
+                <div className="text-left">
                   <p className="text-[10px] font-black uppercase tracking-wider leading-none opacity-60 mb-0.5">{step.subtitle}</p>
-                  <p className="text-xs font-extrabold leading-tight">{step.title.split(' ')[0]} {step.title.split(' ')[1] || ""}</p>
+                  <p className="text-xs font-extrabold leading-tight">{step.title}</p>
                 </div>
               </button>
             ))}
           </div>
 
-          {/* Active Step Panel */}
-          <div className="grid md:grid-cols-12 gap-8 items-center bg-white border border-[#E1ECE7] rounded-3xl p-6 sm:p-8 min-h-[160px] text-left">
-            <div className="md:col-span-8">
-              <span className="text-[#F4941C] text-[10px] font-black uppercase tracking-wider bg-[#FDF2E2] px-2.5 py-1 rounded font-sans">
-                Stage 0{activeStep + 1} • {processingSteps[activeStep].subtitle}
-              </span>
-              <h4 className="text-xl sm:text-2xl font-black text-[#0D1C16] mt-2 mb-3 leading-tight">
-                {processingSteps[activeStep].title}
-              </h4>
-              <p className="text-sm sm:text-base text-[#4E6259] font-medium leading-relaxed">
-                {processingSteps[activeStep].desc}
-              </p>
-            </div>
-            
-            <div className="md:col-span-4 border-l md:border-l-2 border-[#BCD4CA]/30 md:pl-8 flex flex-col justify-center">
-              <span className="text-[10px] font-black uppercase text-[#475C53] tracking-wider block mb-1">Process Standard:</span>
-              <span className="text-base sm:text-lg font-black text-[#0B5A3E] leading-tight">
-                {processingSteps[activeStep].metric}
-              </span>
-              <div className="mt-4 flex gap-1 items-center text-xs font-extrabold text-[#F4941C]">
-                <span>Automated Ratlam Setup</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          {/* Active Blueprint Dashboard Panel */}
+          <div className="relative z-10 max-w-5xl mx-auto bg-white border border-[#BCD4CA] shadow-xl shadow-[#0B5A3E]/5 rounded-[2rem] overflow-hidden">
+            <div className="grid md:grid-cols-12 min-h-[220px]">
+              
+              {/* Left Data Side */}
+              <div className="md:col-span-8 p-8 sm:p-10 flex flex-col justify-center transition-all duration-500 ease-in-out">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="flex h-3 w-3 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F4941C] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#F4941C]"></span>
+                  </span>
+                  <span className="text-[#0B5A3E] text-[10px] font-black uppercase tracking-widest border border-[#BCD4CA] px-2 py-0.5 rounded bg-[#E6F0EC]">
+                    Phase 0{activeStep + 1} Active
+                  </span>
+                </div>
+                
+                <h4 className="text-2xl sm:text-3xl font-black text-[#0D1C16] mb-4 leading-tight">
+                  {processingSteps[activeStep].title}
+                </h4>
+                <p className="text-sm sm:text-base text-[#4E6259] font-medium leading-relaxed max-w-xl">
+                  {processingSteps[activeStep].desc}
+                </p>
               </div>
+              
+              {/* Right Metric Cutaway */}
+              <div className="md:col-span-4 bg-[#0A1410] text-white p-8 sm:p-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-[#BCD4CA]/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B5A3E]/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+                
+                <span className="text-[10px] font-black uppercase text-[#8FAFA1] tracking-widest block mb-2 relative z-10">
+                  Target Specification
+                </span>
+                <span className="text-xl sm:text-2xl font-black text-white leading-tight relative z-10 mb-6">
+                  {processingSteps[activeStep].metric}
+                </span>
+                
+                <div className="w-full bg-white/10 rounded-full h-1.5 relative z-10 overflow-hidden">
+                  <div className="bg-[#F4941C] h-1.5 rounded-full w-full animate-[pulse_2s_ease-in-out_infinite]" />
+                </div>
+                <div className="mt-3 flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-[#8FAFA1] relative z-10">
+                  <span>System Link</span>
+                  <span className="text-emerald-400">Online</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -255,9 +331,6 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((person, idx) => (
               <div key={idx} className="bg-white border border-[#E1ECE7] rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col text-center group overflow-hidden">
-                
-                {/* Large Profile Image Header */}
-                {/* Changed: Increased height from h-64/72 to h-80 sm:h-96 for a better portrait ratio */}
                 <div className="relative w-full h-80 sm:h-96 bg-[#E6F0EC] border-b border-[#E1ECE7] overflow-hidden flex-shrink-0">
                   <img 
                     src={person.image} 
@@ -273,7 +346,6 @@ export default function About() {
                   </div>
                 </div>
 
-                {/* Card Body - Name & Designation */}
                 <div className="p-6 sm:p-8 flex flex-col flex-grow items-center justify-center">
                   <h4 className="text-xl font-black text-[#0D1C16] leading-tight group-hover:text-[#0B5A3E] transition-colors">
                     {person.name}
@@ -286,7 +358,6 @@ export default function About() {
                     {person.bio}
                   </p>
                 </div>
-
               </div>
             ))}
           </div>

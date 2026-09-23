@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async'; // Imported SEO tools
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Products from './components/Products';
@@ -11,16 +13,24 @@ import Careers from './components/Careers';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppBot from './components/WhatsAppBot';
-import AdminDashboard from './components/AdminDashboard'; // Import it
+import AdminDashboard from './components/AdminDashboard';
+import FAQ from './components/FAQ'; // Imported FAQ component
 
-// 1. We group all the landing page sections into one block
+
+// 1. Home Page block with injected SEO Metadata
 const HomePage = ({ selectedProduct, setSelectedProduct }) => (
   <>
+    <Helmet>
+      <title>Ajicon Industries | Industrial Biomass Pellets & Husk Briquettes in MP</title>
+      <meta name="description" content="Leading manufacturer of sustainable biomass pellets and high-CV husk briquettes in Madhya Pradesh. Partner with Ajicon for efficient industrial fuel solutions." />
+      <meta name="keywords" content="Biomass pellets Ratlam, Husk briquettes Madhya Pradesh, Industrial fuel supplier MP, Ajicon Industries" />
+    </Helmet>
     <Hero />
     <Products onSelectProduct={setSelectedProduct} />
     <About />
     <Clients />
     <Testimonials />
+    <FAQ /> 
     <Contact selectedProduct={selectedProduct} />
   </>
 );
@@ -29,32 +39,32 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState('Agro Waste pellets');
 
   return (
-    <Router>
-      <div className="min-h-screen bg-[#FAF7F2] font-sans selection:bg-[#E6F0EC]">
-        {/* Navbar stays at the top of EVERY page */}
-        <Navbar />
-        
-        {/* The router swaps the content between the Home Page and the Careers Page */}
-        <Routes>
-          <Route 
-            path="/" 
-            element={<HomePage selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />} 
-          />
-          <Route 
-            path="/careers" 
-            element={<Careers />} 
-          />
-          <Route path="/admin-portal" 
-          element={<AdminDashboard />} 
-          /> 
-        </Routes>
+    <HelmetProvider>
+      <Router>
+        <div className="min-h-screen bg-[#FAF7F2] font-sans selection:bg-[#E6F0EC]">
+          <Navbar />
+          
+          <Routes>
+            <Route 
+              path="/" 
+              element={<HomePage selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />} 
+            />
+            <Route 
+              path="/careers" 
+              element={<Careers />} 
+            />
+            <Route 
+              path="/admin-portal" 
+              element={<AdminDashboard />} 
+            /> 
+          </Routes>
 
-        {/* Footer and floating widgets stay at the bottom of EVERY page */}
-        <Footer />
-        <ScrollToTop />
-        <WhatsAppBot />
-      </div>
-    </Router>
+          <Footer />
+          <ScrollToTop />
+          <WhatsAppBot />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

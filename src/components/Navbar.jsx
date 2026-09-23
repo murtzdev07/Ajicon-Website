@@ -1,35 +1,66 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  
+  const navContainerRef = useRef(null);
+  const [pillStyle, setPillStyle] = useState({ width: 0, transform: 'translateX(0px)', opacity: 0 });
 
-  // Shrinks the pill slightly when scrolling down for a dynamic feel
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 🟢 NEW: Watches the URL and scrolls to the exact section when navigating across pages
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
-        // Small timeout ensures the HomePage has fully rendered before attempting to scroll
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
     } else {
-      // If there is no hash (e.g., clicking "Home" or "Careers"), snap to the top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location]);
 
-  // Updated to use 'path' instead of 'href' to work with React Router
+  const isActive = (path) => {
+    const currentPath = location.pathname;
+    const currentHash = location.hash;
+    const [linkPath, linkHash] = path.split('#');
+    const finalLinkHash = linkHash ? '#' + linkHash : '';
+
+    if (finalLinkHash) {
+       return currentPath === linkPath && currentHash === finalLinkHash;
+    }
+    return currentPath === path && currentHash === '';
+  };
+
+  useEffect(() => {
+    const updatePillPosition = () => {
+      if (!navContainerRef.current) return;
+      const activeEl = navContainerRef.current.querySelector('[data-active="true"]');
+      
+      if (activeEl) {
+        setPillStyle({
+          width: `${activeEl.offsetWidth}px`,
+          transform: `translateX(${activeEl.offsetLeft}px)`,
+          opacity: 1
+        });
+      } else {
+        setPillStyle((prev) => ({ ...prev, opacity: 0 }));
+      }
+    };
+
+    setTimeout(updatePillPosition, 50);
+    window.addEventListener('resize', updatePillPosition);
+    return () => window.removeEventListener('resize', updatePillPosition);
+  }, [location.pathname, location.hash]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Products', path: '/#products' },
@@ -46,7 +77,7 @@ export default function Navbar() {
           ${scrolled ? 'max-w-4xl bg-white/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] py-2 px-3' : 'max-w-6xl bg-white/60 shadow-lg py-3 px-4'}
         `}
       >
-        {/* Logo Area - Converted to React Router Link */}
+        {/* Logo Area */}
         <Link to="/" className="flex items-center gap-2 pl-2 md:pl-4 cursor-pointer transition-transform active:scale-95">
           <div className="w-10 h-10 flex items-center justify-center">
             <img 
@@ -73,22 +104,51 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Links - Converted to React Router Links */}
-        <div className="hidden md:flex items-center space-x-1 bg-slate-900/5 p-1 rounded-full border border-slate-900/5">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name}
-              to={link.path} 
-              className="px-5 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-white rounded-full transition-all duration-300 shadow-sm shadow-transparent hover:shadow-slate-200/50"
-            >
-              {link.name}
-            </Link>
-          ))}
+        {/* Desktop Links Container */}
+        <div 
+          ref={navContainerRef}
+          className="hidden md:flex items-center relative bg-slate-900/5 p-1 rounded-full border border-slate-900/5"
+        >
+          {/* 🟢 Authentic iOS Sliding Glass Pill */}
+          <div 
+            className="absolute top-1 bottom-1 rounded-full pointer-events-none z-0"
+            style={{
+              width: pillStyle.width,
+              transform: pillStyle.transform,
+              opacity: pillStyle.opacity,
+              // iOS Native Spring Animation Curve
+              transition: 'all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1)',
+              
+              // Authentic iOS Blur Effect (High blur, high saturation, high transparency)
+              background: 'rgba(255, 255, 255, 0.25)', 
+              backdropFilter: 'blur(20px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              
+              // Hairline edge reflection & iOS segmented control shadow
+              border: '0.5px solid rgba(255, 255, 255, 0.45)',
+              boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.08), 0px 3px 1px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(255, 255, 255, 0.8)'
+            }}
+          />
+
+          {navLinks.map((link) => {
+            const active = isActive(link.path);
+            return (
+              <Link 
+                key={link.name}
+                to={link.path} 
+                data-active={active}
+                className={`relative z-10 px-5 py-2 text-sm font-semibold rounded-full transition-colors duration-300 
+                  ${active ? 'text-[#0B5A3E]' : 'text-slate-600 hover:text-slate-900 hover:bg-white/30'}
+                `}
+              >
+                {link.name}
+              </Link>
+            )
+          })}
         </div>
 
         {/* Action Area */}
         <div className="flex items-center gap-2 pr-1">
-          {/* Desktop CTA - Converted to React Router Link */}
           <Link 
             to="/#contact" 
             className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#0B5A3E] rounded-full hover:bg-[#08422E] hover:scale-105 active:scale-95 transition-all duration-300 shadow-md shadow-[#0B5A3E]/20"
@@ -115,16 +175,34 @@ export default function Navbar() {
           ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}
       >
         <div className="bg-white/95 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[2rem] p-4 flex flex-col gap-2">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name}
-              to={link.path} 
-              onClick={() => setIsOpen(false)}
-              className="block px-6 py-4 rounded-2xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-bold text-lg transition-all active:scale-95"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActive(link.path);
+            return (
+              <Link 
+                key={link.name}
+                to={link.path} 
+                onClick={() => setIsOpen(false)}
+                className={`block px-6 py-4 rounded-2xl font-bold text-lg transition-all active:scale-95 relative overflow-hidden
+                  ${active ? 'text-[#0B5A3E]' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}
+                `}
+              >
+                {/* Authentic iOS Mobile Liquid Glass Background */}
+                {active && (
+                  <div 
+                    className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.25)',
+                      backdropFilter: 'blur(20px) saturate(180%)',
+                      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                      border: '0.5px solid rgba(255, 255, 255, 0.45)',
+                      boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.08), inset 0px 1px 1px rgba(255, 255, 255, 0.8)'
+                    }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </Link>
+            )
+          })}
           <div className="h-px bg-slate-100 my-2 mx-4"></div>
           <Link 
             to="/#contact" 
